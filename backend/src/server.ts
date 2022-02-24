@@ -1,10 +1,8 @@
-import express from "express";
 import cors from "cors"
-const app = express()
+import server from "./services/server"
 
 const PORT = process.env.PORT
-app.use(cors())
 
-app.listen(3000 || PORT, () => {
-    console.log("Server is running...")
-})
+server.use(cors())
+
+server.start(8000)
