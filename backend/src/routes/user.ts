@@ -23,6 +23,14 @@ app.get("/user/id/:id", async (req: Request, res: Response) => {
     return res.send(getUserById)
 })
 
+app.get("user/username/:username", async (req: Request, res: Response) => {
+    const username = req.params.username
+
+    const findUser = await new UserController().findUserByUsername(username)
+
+    res.send(findUser)
+})
+
 app.patch("/user", async (req: Request, res: Response) => {
     const {id, username, password, email} = req.body
 
@@ -35,8 +43,8 @@ app.patch("/user", async (req: Request, res: Response) => {
     return res.send(updateUser)
 })
 
-app.delete("/user", async (req: Request, res: Response) => {
-    const {id} = req.body
+app.delete("/user/:id", async (req: Request, res: Response) => {
+    const id = parseInt(req.params.id)
 
     const deleteUser = await new UserController().deleteUser(id)
 

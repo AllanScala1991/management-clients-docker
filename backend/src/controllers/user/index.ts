@@ -29,7 +29,7 @@ export class UserController {
             return {message: "Erro ao registrar um novo usuário, tente novamente."}
         }
 
-        return {message: "Usuário registrado com sucesso."}
+        return {message: "Usuário registrado com sucesso.", data: userCreate}
     }
 
     async findUserById(id: number) {
@@ -38,6 +38,14 @@ export class UserController {
         const findUser = await this.serviceUser.findUserById(id)
 
         if(!findUser) return {message: "Usuário não localizado.", status: false}
+
+        return {data: findUser, status: true}
+    }
+
+    async findUserByUsername(username: string) {
+        if (!username) return {message: "Usuário não localizado.", status: false}
+
+        const findUser = await this.serviceUser.finUserByUsername(username)
 
         return {data: findUser, status: true}
     }
