@@ -1,6 +1,15 @@
 import cors from "cors"
-import server from "./services/server"
+import bodyParser from "body-parser"
+import express from "express"
 
-server.use(cors())
+const app = express()
 
-server.start(3000)
+app.use(cors())
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
+
+app.use(require("./routes/index"))
+
+app.listen(3000, () => {
+    console.log("Server is running ...")
+})
