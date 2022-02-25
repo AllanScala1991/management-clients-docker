@@ -1,11 +1,13 @@
 import { UserService } from "../../services/user";
 import { IUser } from "../../interfaces/user";
 import { Email } from "../../services/email-validator";
+import { Encrypter } from "../../services/encrypter";
 
 export class UserController {
     constructor(
         private readonly serviceUser = new UserService(),
-        private readonly emailValidator = new Email()
+        private readonly emailValidator = new Email(),
+        private readonly encryptor = new Encrypter()
     ){}
 
     async createUser(user: IUser) {
@@ -23,7 +25,13 @@ export class UserController {
 
         if(!isValidEmail) return {message: "E-mail inválido, tente novamente."}
 
-        const userCreate = await this.serviceUser.createUser(user)
+        const passwordHashed = await this.encryptor.hash(user.password, 8)
+
+        const userCreate = await this.serviceUser.createUser({
+            username: user.username,
+            password: passwordHashed,
+            email: user.email
+        })
 
         if(!userCreate) {
             return {message: "Erro ao registrar um novo usuário, tente novamente."}
