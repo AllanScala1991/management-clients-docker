@@ -51,4 +51,8 @@ app.delete("/user/:id", async (req: Request, res: Response) => {
     return res.send(deleteUser)
 })
 
+app.get("/", (req: Request, res: Response) => {
+    res.send("API RODANDO VIA DOCKER")
+})
+
 export default app
