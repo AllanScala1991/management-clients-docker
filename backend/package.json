@@ -6,7 +6,7 @@
   "scripts": {
     "start": "ts-node src/server.ts",
     "prettier-start": "pretty-quick --staged",
-    "docker": "docker container stop api-node-docker && docker image build -t api-node . && docker container start api-node-docker"
+    "docker": "docker image build -t api-node . && docker container start api-node-docker"
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
