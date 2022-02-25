@@ -14,4 +14,36 @@ export class UserService {
             }
         })
     }
+
+    async findUserById(id: number): 
+    Promise<Prisma.Prisma__UserClient<User | null>> {
+        return await this.prisma.user.findUnique({
+            where: {
+                id: id
+            }
+        })
+    }
+
+    async updateUser(user: IUser, id: number): 
+    Promise<Prisma.Prisma__UserClient<User>>{
+        return await this.prisma.user.update({
+            data: {
+                username: user.username,
+                password: user.password,
+                email: user.email
+            },
+            where: {
+                id: id
+            }
+        })
+    }
+
+    async deleteUser(id: number): 
+    Promise<Prisma.Prisma__UserClient<User>>{
+        return await this.prisma.user.delete({
+            where: {
+                id: id
+            }
+        })
+    }
 }
