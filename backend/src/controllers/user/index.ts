@@ -47,6 +47,8 @@ export class UserController {
 
         const findUser = await this.serviceUser.finUserByUsername(username)
 
+        if(findUser.length <= 0) return {message: "Nenhum usuário localizado.", status: false}
+
         return {data: findUser, status: true}
     }
 

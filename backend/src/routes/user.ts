@@ -23,7 +23,7 @@ app.get("/user/id/:id", async (req: Request, res: Response) => {
     return res.send(getUserById)
 })
 
-app.get("user/username/:username", async (req: Request, res: Response) => {
+app.get("/user/username/:username", async (req: Request, res: Response) => {
     const username = req.params.username
 
     const findUser = await new UserController().findUserByUsername(username)
