@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma, User } from "@prisma/client";
+import { PrismaClient, Prisma, User, PrismaPromise } from "@prisma/client";
 import { IUser } from "../../interfaces/user";
 
 export class UserService {
@@ -20,6 +20,15 @@ export class UserService {
         return await this.prisma.user.findUnique({
             where: {
                 id: id
+            }
+        })
+    }
+
+    async finUserByUsername(username: string):
+    Promise<PrismaPromise<User[]>> {
+        return await this.prisma.user.findMany({
+            where: {
+                username: username
             }
         })
     }
