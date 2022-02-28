@@ -1,5 +1,6 @@
 import { Router, Request, Response } from "express"
 import { UserController } from "../controllers/user"
+import auth from "../middlewares/authenticated"
 
 const app = Router()
 
@@ -15,7 +16,7 @@ app.post("/user", async (req: Request, res: Response) => {
     return res.send(createUser)
 })
 
-app.get("/user/id/:id", async (req: Request, res: Response) => {
+app.get("/user/id/:id", auth, async (req: Request, res: Response) => {
     const id = parseInt(req.params.id)
 
     const getUserById = await new UserController().findUserById(id)
@@ -23,7 +24,7 @@ app.get("/user/id/:id", async (req: Request, res: Response) => {
     return res.send(getUserById)
 })
 
-app.get("/user/username/:username", async (req: Request, res: Response) => {
+app.get("/user/username/:username", auth, async (req: Request, res: Response) => {
     const username = req.params.username
 
     const findUser = await new UserController().findUserByUsername(username)
@@ -31,7 +32,7 @@ app.get("/user/username/:username", async (req: Request, res: Response) => {
     res.send(findUser)
 })
 
-app.patch("/user", async (req: Request, res: Response) => {
+app.patch("/user", auth, async (req: Request, res: Response) => {
     const {id, username, password, email} = req.body
 
     const updateUser = await new UserController().updateUser({
@@ -43,7 +44,7 @@ app.patch("/user", async (req: Request, res: Response) => {
     return res.send(updateUser)
 })
 
-app.delete("/user/:id", async (req: Request, res: Response) => {
+app.delete("/user/:id", auth, async (req: Request, res: Response) => {
     const id = parseInt(req.params.id)
 
     const deleteUser = await new UserController().deleteUser(id)
