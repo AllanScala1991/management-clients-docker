@@ -9,7 +9,8 @@ app.use(cors())
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 
-app.use(require("./routes/index"))
+app.use(require("./routes/user"))
+app.use(require("./routes/login"))
 
 app.listen(3000, () => {
     console.log("Server is running ...")

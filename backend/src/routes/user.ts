@@ -55,4 +55,4 @@ app.get("/", (req: Request, res: Response) => {
     res.send("API RODANDO VIA DOCKER")
 })
 
-export default app
+module.exports = app

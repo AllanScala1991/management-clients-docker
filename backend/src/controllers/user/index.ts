@@ -1,13 +1,13 @@
 import { UserService } from "../../services/user";
 import { IUser } from "../../interfaces/user";
-import { Email } from "../../services/email-validator";
-import { Encrypter } from "../../services/encrypter";
+import { EmailService } from "../../services/email-validator";
+import { EncrypterService } from "../../services/encrypter";
 
 export class UserController {
     constructor(
         private readonly serviceUser = new UserService(),
-        private readonly emailValidator = new Email(),
-        private readonly encryptor = new Encrypter()
+        private readonly emailValidator = new EmailService(),
+        private readonly encryptor = new EncrypterService()
     ){}
 
     async createUser(user: IUser) {
@@ -15,7 +15,7 @@ export class UserController {
             return {message: "Todos os campos devem ser preenchidos."}
         }
 
-        const userExists = await this.serviceUser.finUserByUsername(user.username)
+        const userExists = await this.serviceUser.findUserByUsername(user.username)
 
         if(userExists.length > 0) {
             return {message: "Já existe um usuário com essas informações."}
@@ -53,7 +53,7 @@ export class UserController {
     async findUserByUsername(username: string) {
         if (!username) return {message: "Usuário não localizado.", status: false}
 
-        const findUser = await this.serviceUser.finUserByUsername(username)
+        const findUser = await this.serviceUser.findUserByUsername(username)
 
         if(findUser.length <= 0) return {message: "Nenhum usuário localizado.", status: false}
 
