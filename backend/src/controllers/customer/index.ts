@@ -3,9 +3,6 @@ import { CustomerService } from "../../services/customer";
 import { EmailService } from "../../services/email-validator";
 
 export class CustomerController {
-    constructor(
-        
-    ){}
 
     async createCustomer(customer: ICustomer) {
         try {
