@@ -8,7 +8,7 @@ export class CustomerController {
         try {
             const isEmpty = await Promise.all(Object.values(customer).filter((value) => {return value == ""}))
     
-            if(isEmpty.length > 0) return {message: "Todos os campos devem ser preenchidos."}
+            if(isEmpty.length > 0) return {message: "Todos os campos devem ser preenchidos.", status: false}
     
             const emailValidator = await new EmailService().validate(customer.email)
     
