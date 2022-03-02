@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(require("./routes/user"))
 app.use(require("./routes/login"))
+app.use(require("./routes/customer"))
 
 app.listen(3000, () => {
     console.log("Server is running ...")

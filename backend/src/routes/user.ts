@@ -17,7 +17,7 @@ app.post("/user", async (req: Request, res: Response) => {
 })
 
 app.get("/user/id/:id", auth, async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
 
     const getUserById = await new UserController().findUserById(id)
 
@@ -45,7 +45,7 @@ app.patch("/user", auth, async (req: Request, res: Response) => {
 })
 
 app.delete("/user/:id", auth, async (req: Request, res: Response) => {
-    const id = parseInt(req.params.id)
+    const id = req.params.id
 
     const deleteUser = await new UserController().deleteUser(id)
 

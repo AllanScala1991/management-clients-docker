@@ -22,7 +22,8 @@ export class LoginService {
         }
 
         const tokenGenerate = sign({
-            user: userExists[0].username
+            user: userExists[0].username,
+            id: userExists[0].id
         },
         this.secretToken,
         {
