@@ -14,7 +14,7 @@ app.post("/customer", auth, async (req: Request, res: Response) => {
     res.send(createCustomer)
 })
 
-app.get("/customer/:userId/:name?", async (req: Request, res: Response) => {
+app.get("/customer/:userId/:name?", auth, async (req: Request, res: Response) => {
     const {userId, name} = req.params
 
     const getCustomer = await new CustomerController().findCustomer(userId, name)
@@ -22,7 +22,7 @@ app.get("/customer/:userId/:name?", async (req: Request, res: Response) => {
     res.send(getCustomer)
 })
 
-app.patch("/customer", async (req: Request, res: Response) => {
+app.patch("/customer", auth, async (req: Request, res: Response) => {
     const {customerId, name, birthDate, zipCode, city, district, address, 
         addressNumber, state, phone, email, userId} = req.body
 
@@ -32,7 +32,7 @@ app.patch("/customer", async (req: Request, res: Response) => {
     res.send(customerUpdate)
 })
 
-app.delete("/customer/:id", async (req: Request, res: Response) => {
+app.delete("/customer/:id", auth, async (req: Request, res: Response) => {
     const customerId = req.params.id
 
     const deleteCustomer = await new CustomerController().deleteCustomer(customerId)
