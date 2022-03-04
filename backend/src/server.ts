@@ -13,6 +13,7 @@ app.use(require("./routes/user"))
 app.use(require("./routes/login"))
 app.use(require("./routes/customer"))
 app.use(require("./routes/report"))
+app.use(require("./routes/cep"))
 
 app.listen(3000, () => {
     console.log("Server is running ...")

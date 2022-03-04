@@ -1,6 +1,6 @@
 import { Router, Request, Response } from "express";
-import { CustomerController } from "controllers/customer";
-import auth from "middlewares/authenticated"
+import { CustomerController } from "../controllers/customer";
+import auth from "../middlewares/authenticated"
 
 const app = Router()
 

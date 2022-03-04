@@ -1,4 +1,4 @@
-import { LoginService } from "services/login"
+import { LoginService } from "../../services/login"
 
 export class LoginController {
 

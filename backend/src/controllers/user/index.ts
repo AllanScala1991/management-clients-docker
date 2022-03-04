@@ -1,7 +1,7 @@
-import { UserService } from "services/user";
-import { IUser } from "interfaces/user";
-import { EmailService } from "services/email-validator";
-import { EncrypterService } from "services/encrypter";
+import { UserService } from "../../services/user";
+import { IUser } from "../../interfaces/user";
+import { EmailService } from "../../services/email-validator";
+import { EncrypterService } from "../../services/encrypter";
 
 export class UserController {
     constructor(

@@ -6,13 +6,11 @@
   "scripts": {
     "start": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
     "prettier-start": "pretty-quick --staged",
-    "docker-up": "docker-compose up -d",
-    "docker-stop": "docker-compose stop",
-    "docker-update": "docker image build -t api-node .",
-    "build": "yarn docker-stop && yarn docker-update && yarn docker-up"
+    "build": "docker image build -t api-node ."
   },
   "dependencies": {
     "@prisma/client": "^3.10.0",
+    "axios": "^0.26.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.2",
     "cors": "^2.8.5",
@@ -22,6 +20,7 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "@types/axios": "^0.14.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.12",
     "@types/email-validator": "^1.0.6",
