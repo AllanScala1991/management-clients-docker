@@ -1,5 +1,5 @@
 import { Router, Request, Response } from "express";
-import { ReportController } from "../controllers/report";
+import { ReportController } from "controllers/report";
 
 const app = Router()
 

@@ -1,6 +1,6 @@
-import { ICustomer } from "../../interfaces/customer";
-import { CustomerService } from "../../services/customer";
-import { EmailService } from "../../services/email-validator";
+import { ICustomer } from "interfaces/customer";
+import { CustomerService } from "services/customer";
+import { EmailService } from "services/email-validator";
 
 export class CustomerController {
 

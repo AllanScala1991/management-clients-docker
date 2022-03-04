@@ -1,5 +1,5 @@
 import { PrismaClient, Prisma, User, PrismaPromise } from "@prisma/client";
-import { IUser } from "../../interfaces/user";
+import { IUser } from "interfaces/user";
 
 export class UserService {
     constructor(private readonly prisma = new PrismaClient()){}

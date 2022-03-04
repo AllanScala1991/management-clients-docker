@@ -1,4 +1,4 @@
-import { ICustomer } from "../../interfaces/customer";
+import { ICustomer } from "interfaces/customer";
 import { PrismaClient, Prisma, PrismaPromise, Customers } from "@prisma/client";
 
 export class CustomerService {
