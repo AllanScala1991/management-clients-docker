@@ -4,7 +4,7 @@ export class ReportService {
         private readonly prisma: PrismaClient = new PrismaClient(),
     ){}
 
-    async mountCustomersReport(userId: string): Promise<{}> {
+    async mountCustomersReport(userId: string): Promise<{totalCustomers: number, lastCustomers: any}> {
         const allCustomers = await this.findAllCustomers(userId)
 
         const customerLastRegister = await this.findCustomerLastRegister(userId)
@@ -35,7 +35,7 @@ export class ReportService {
 
     private async findCustomerLastRegister(userId: string): Promise<Customers[]> {
         return await this.prisma.customers.findMany({
-            take: 3,
+            take: 1,
             where: {
                 userId: userId
             },
