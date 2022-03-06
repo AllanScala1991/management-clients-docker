@@ -16,8 +16,8 @@ export class UserService {
     }
 
     async findUserById(id: string): 
-    Promise<Prisma.Prisma__UserClient<User | null>> {
-        return await this.prisma.user.findUnique({
+    Promise<Prisma.Prisma__UserClient<User[]>> {
+        return await this.prisma.user.findMany({
             where: {
                 id: id
             }
