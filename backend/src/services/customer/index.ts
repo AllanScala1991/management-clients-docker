@@ -1,10 +1,11 @@
 import { ICustomer } from "../../interfaces/customer";
 import { PrismaClient, Prisma, PrismaPromise, Customers } from "@prisma/client";
+import prismaClient from "../orm"
 
 export class CustomerService {
 
     constructor(
-        private readonly prisma = new PrismaClient() 
+        private readonly prisma:PrismaClient = prismaClient
     ){}
 
     async createCustomer(customer: ICustomer): 

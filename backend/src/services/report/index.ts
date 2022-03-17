@@ -1,7 +1,8 @@
 import { PrismaClient, Customers } from "@prisma/client"
+import prismaClient from "../orm"
 export class ReportService {
     constructor(
-        private readonly prisma: PrismaClient = new PrismaClient(),
+        private readonly prisma: PrismaClient = prismaClient,
     ){}
 
     async mountCustomersReport(userId: string): Promise<{totalCustomers: number, lastCustomers: any}> {

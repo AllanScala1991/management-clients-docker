@@ -1,9 +1,9 @@
-import { Prisma, User, PrismaPromise } from "@prisma/client";
+import { Prisma, User, PrismaPromise, PrismaClient } from "@prisma/client";
 import { IUser } from "../../interfaces/user";
 import prismaClient from "../orm"
 
 export class UserService {
-    constructor(private readonly prisma = prismaClient){}
+    constructor(private readonly prisma: PrismaClient = prismaClient){}
 
     async createUser(user: IUser): 
     Promise<Prisma.Prisma__UserClient<User>> {
