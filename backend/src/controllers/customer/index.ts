@@ -92,7 +92,8 @@ export class CustomerController {
             if(!customerId) return {message: "Nenhum cliente foi localizado", status: false}
     
             const customerDelete = await new CustomerService().deleteCustomer(customerId)
-            if(customerDelete) return {message: "Não foi possivel deletar o cliente, tente novamente.", status: false}
+
+            if(!customerDelete) return {message: "Não foi possivel deletar o cliente, tente novamente.", status: false}
     
             return {message: "Cliente deletado com sucesso.", status: true}
             

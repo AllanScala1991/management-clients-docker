@@ -7,7 +7,7 @@
     "start": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
     "prettier-start": "pretty-quick --staged",
     "build": "docker image build -t api-node .",
-    "test": "jest --coverage --config ./src/jest.config.ts",
+    "test": "jest --coverage --maxWorkers=1 --config ./src/jest.config.ts",
     "test:watch": "jest --watch --config ./src/jest.config.ts"
   },
   "dependencies": {
