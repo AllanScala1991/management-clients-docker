@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --watch 'src/' --exec 'ts-node src/server.ts' -e ts",
+    "start": "ts-node src/server.ts",
     "prettier-start": "pretty-quick --staged",
     "build": "docker image build -t api-node .",
     "test": "jest --coverage --maxWorkers=1 --config ./src/jest.config.ts",
