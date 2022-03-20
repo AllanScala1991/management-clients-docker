@@ -1,8 +1,7 @@
-
 async function loginUser(username, password) {
     return await axios({
         method: 'post',
-        url: 'http://172.21.0.3:3000/login',
+        url: `${BASE_URL}/login`,
         data: {
             username: username,
             password: password
