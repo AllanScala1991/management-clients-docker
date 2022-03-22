@@ -22,11 +22,22 @@ function backLoginPage(){
 }
 
 function isUserValidate(user){
-    alert(user.message)
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: user.message,
+        confirmButtonColor: '#2469CB'
+    })
 
     if(user.status) {
         clearInputs()
         backLoginPage()
+        Swal.fire({
+            icon: 'success',
+            title: 'Sucesso...',
+            text: user.message,
+            confirmButtonColor: '#2469CB'
+        })
     }
 }
 

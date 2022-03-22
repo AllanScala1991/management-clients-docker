@@ -11,7 +11,12 @@ async function loginUser(username, password) {
 
 function saveToken(isLogin) {
     if(!isLogin.status) {
-        alert(isLogin.message)
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: isLogin.message,
+            confirmButtonColor: '#2469CB'
+        })
     } else {
         clearInputs()
         window.localStorage.setItem("token", isLogin.token)
