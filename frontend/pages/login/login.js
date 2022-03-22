@@ -10,6 +10,9 @@ async function loginUser(username, password) {
 }
 
 function saveToken(isLogin) {
+    $(".loading-container").empty()
+    document.querySelector('.loading-container').style.zIndex = "-999"
+
     if(!isLogin.status) {
         Swal.fire({
             icon: 'error',
@@ -42,6 +45,9 @@ function loadHomePage() {
 document.querySelector("#login-access").onclick = async () => {
     const username = document.querySelector("#login-username").value
     const password = document.querySelector("#login-password").value
+
+    $(".loading-container").load("utils/loading/loading.html")
+    document.querySelector('.loading-container').style.zIndex = "999"
 
     const isLogin = await loginUser(username, password)
 

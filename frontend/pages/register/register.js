@@ -22,6 +22,9 @@ function backLoginPage(){
 }
 
 function isUserValidate(user){
+    $(".loading-container").empty()
+    document.querySelector('.loading-container').style.zIndex = "-999"
+
     Swal.fire({
         icon: 'error',
         title: 'Oops...',
@@ -45,6 +48,9 @@ document.querySelector("#register-confirm").onclick = async () => {
     const username = document.querySelector("#register-username").value
     const password = document.querySelector("#register-password").value
     const email = document.querySelector("#register-email").value
+
+    $(".loading-container").load("utils/loading/loading.html")
+    document.querySelector('.loading-container').style.zIndex = "999"
 
     const user = await registerUser(username, password, email)
 
