@@ -1,0 +1,126 @@
+#home-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    overflow: hidden;
+    background-color: #2469CB;
+}
+
+.top-container {
+    display: flex;
+    width: 100%;
+    height: 5vh;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    background-color: #2469CB;
+}
+
+#home-second-container {
+    display: flex;
+    width: 100%;
+    height: 95vh;
+    flex-direction: row;
+    justify-content:  left;
+    align-items: center;
+    overflow: hidden;
+}
+
+.bottom-container {
+    display: flex;
+    width: 99%;
+    height: 93vh;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 1vh;
+    margin-left: 0.5%;
+}
+
+.user-logged-container {
+    width: 28%;
+    height: 4vh;
+    margin-top: 1vh;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 1vh;
+    border-right: solid whitesmoke 0.3vh;
+}
+
+.user-logged-name label {
+    font-family: 'Arial';
+    font-size: 2.5vh;
+    color: white;
+}
+
+.user-logged-name span {
+    font-family: 'Arial';
+    font-size: 2.5vh;
+    color: white;
+    margin-right: 1vh;
+}
+
+#home-user {
+    width: 24px;
+    height: 24px;
+    margin-right: 1vh;
+}
+
+#home-user:hover {
+    cursor: pointer;
+}
+
+.buttons-top-container{
+    width: 70%;
+    height: 4vh;
+    margin-top: 1vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+    overflow: hidden;
+    margin-left: 1vh;
+}
+
+.button-top {
+    width: 20%;
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    margin-right: 2vh;
+    border-right: solid white 0.3vh;
+}
+
+.button-top:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: white;
+}
+
+.top-button-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 1vh;
+}
+
+.top-button-text {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 2.5vh;
+    color: white;
+    font-weight: bold;
+}
+
+.button-last {
+    border: none;
+}
