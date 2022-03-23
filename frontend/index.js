@@ -12,7 +12,7 @@ function verifyToken() {
 }
 
 $(document).ready(() => {
-    $('#app').load("pages/home/home.html")
+    $('#app').load("pages/login/login.html")
    //verifyToken()
 })
 

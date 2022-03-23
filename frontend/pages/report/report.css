@@ -1,0 +1,34 @@
+.report-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    width: 30%;
+    height: 30%;
+    background-color: #2469CB;
+    border: none;
+    border-radius: 1vh;
+    margin: 2vh;
+}
+
+.report-box-title {
+    font-family: 'Lucida Sans';
+    color: white;
+    font-weight: bold;
+    font-size: 4vh;
+    text-decoration: underline;
+    margin-bottom: 5vh;
+}
+
+#report-total-customers, #report-last-customer {
+    font-family: 'Lucida Sans';
+    color: white;
+    font-weight: bold;
+    font-size: 8vh;
+}
+
+#report-last-customer {
+    text-align: center;
+    font-size: 5vh;
+    word-wrap: break-word;
+}

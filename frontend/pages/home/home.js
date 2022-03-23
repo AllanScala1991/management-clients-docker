@@ -5,6 +5,8 @@ function setUsernameText(username) {
 $(document).ready(() => {
     let username = window.localStorage.getItem("user")
     setUsernameText(username)
+    $('#home-second-container .bottom-container').empty()
+    $('#home-second-container .bottom-container').load('pages/report/report.html')
 })
 
 // DASHBOARD BUTTON
