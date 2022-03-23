@@ -7,7 +7,9 @@ describe("Login Controller", () => {
 
         expect(userLogin).toHaveProperty('token')
         expect(userLogin).toHaveProperty('status')
+        expect(userLogin).toHaveProperty('decode')
         expect(userLogin.token).not.toBeNull
+        expect(userLogin.decode).not.toBeNull
         expect(userLogin.status).toBeTruthy
     })
 

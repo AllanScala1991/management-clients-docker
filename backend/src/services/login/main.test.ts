@@ -11,6 +11,7 @@ describe("Login Service", () => {
 
         expect(login.status).toBeTruthy
         expect(login.token.length).toBeGreaterThan(0)
+        expect(login.decode).toBeNull
     })
 
     it("Should validate login with invalid username", async () => {

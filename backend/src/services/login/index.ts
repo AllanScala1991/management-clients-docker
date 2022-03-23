@@ -1,5 +1,5 @@
 import { UserService } from "../user"
-import { sign } from "jsonwebtoken"
+import { sign, verify } from "jsonwebtoken"
 import "dotenv/config"
 import { EncrypterService } from "../encrypter"
 
@@ -30,7 +30,9 @@ export class LoginService {
             expiresIn: "1d"
         })
 
-        return {status: true, token: tokenGenerate}
+        const decode = verify(tokenGenerate, this.secretToken)
+
+        return {status: true, token: tokenGenerate, decode: decode}
 
     } 
 }

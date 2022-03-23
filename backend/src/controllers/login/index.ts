@@ -14,7 +14,7 @@ export class LoginController {
                 return {message: "Usuário ou Senha estão incorretos.", status: false}
             }
     
-            return {token: userExists.token, status: true}
+            return {token: userExists.token, status: true, decode: userExists.decode}
             
         } catch (error) {
             return {message: "Erro ao tentar realizar o login, contate o administrador.", status: false}

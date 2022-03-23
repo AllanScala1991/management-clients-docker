@@ -23,6 +23,8 @@ function saveToken(isLogin) {
     } else {
         clearInputs()
         window.localStorage.setItem("token", isLogin.token)
+        window.localStorage.setItem("user", isLogin.decode.user)
+        window.localStorage.setItem("user_id", isLogin.decode.id)
         loadHomePage()
     }
 }
