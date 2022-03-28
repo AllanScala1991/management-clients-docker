@@ -6,7 +6,7 @@ $(document).ready(() => {
     let username = window.localStorage.getItem("user")
     setUsernameText(username)
     $('#home-second-container .bottom-container').empty()
-    $('#home-second-container .bottom-container').load('pages/report/report.html')
+    $('#home-second-container .bottom-container').load('pages/customer/customer-register.html') // TROCAR PARA REPORT QUANDO FINALZIAR
 })
 
 // DASHBOARD BUTTON
