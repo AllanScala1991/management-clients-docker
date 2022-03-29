@@ -1,4 +1,4 @@
-const BASE_URL = "http://172.21.0.3:3000"
+const BASE_URL = "http://localhost:3000"
 
 function verifyToken() {
     const isToken = window.localStorage.getItem('token')

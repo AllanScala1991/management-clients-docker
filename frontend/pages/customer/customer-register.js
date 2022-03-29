@@ -47,7 +47,7 @@ function clearInputs() {
     document.querySelector("#customer-register-email").value = ""
 }
 
-function openModal() {
+function openModal(customer) {
     if(customer.data.status) {
         Swal.fire({
             icon: 'success',

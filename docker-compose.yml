@@ -1,14 +1,14 @@
 version: '3'
 
 services:
-  db-postgres:
+  postgres:
     image: postgres:14-alpine
     container_name: db-postgres
     environment:
       POSTGRES_PASSWORD: "admin"
     ports:
       - 5432:5432
-  api-docker:
+  backend:
     image: api-node:latest
     container_name: node-api
     ports:
@@ -16,4 +16,4 @@ services:
     env_file:
       - ./backend/.env
     depends_on:
-      - db-postgres
+      - postgres
