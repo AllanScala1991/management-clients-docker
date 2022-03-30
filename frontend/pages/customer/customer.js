@@ -42,8 +42,14 @@ async function deleteCustomer(userId) {
     })
 }
 
-// BUTTON OPEN REGISTER
+// BUTTON OPEN CUSTOMER REGISTER
 document.querySelector("#btn-customer-register").onclick = () => {
     $(".bottom-container").empty()
-    $(".bottom-container").load("pages/customer/customer-register.html")
+    $(".bottom-container").load("pages/customer/customer-register/customer-register.html")
+}
+
+// BUTTON OPEN CUSTOMER FIND
+document.querySelector("#btn-customer-search").onclick = () => {
+    $(".bottom-container").empty()
+    $(".bottom-container").load("pages/customer/customer-find/customer-find.html")
 }
