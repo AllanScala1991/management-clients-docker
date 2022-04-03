@@ -44,6 +44,16 @@ export class CustomerService {
             }
         })
     }
+
+    async findCustomerWithID(customerId: string, userId: string):
+    Promise<PrismaPromise<Customers[]>>{
+        return await this.prisma.customers.findMany({
+            where: {
+                id: customerId,
+                userId: userId
+            }
+        })
+    }
     
     async updateCustomer(customer: ICustomer, id: string): 
     Promise<Prisma.Prisma__CustomersClient<any>>{

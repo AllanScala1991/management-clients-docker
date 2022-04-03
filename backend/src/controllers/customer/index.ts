@@ -62,6 +62,16 @@ export class CustomerController {
         }
     }
 
+    async findCustomerWithID(customerId: string, userId: string) {
+        if(!customerId) {
+            return {message: "Nenhum cliente foi localizado.", status: false}
+        }
+
+        const customer = await new CustomerService().findCustomerWithID(customerId, userId)
+        
+        return {data: customer, status: true}
+    }
+
     async updateCustomer(customerId: string, customer: ICustomer) {
         try {
             const isEmpty = await Promise.all(Object.values(customer).filter((value) => {return value == ""}))

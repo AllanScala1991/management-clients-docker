@@ -22,6 +22,14 @@ app.get("/customer/:userId/:name?", auth, async (req: Request, res: Response) =>
     res.send(getCustomer)
 })
 
+app.get("/customer/id/:userId/:customerId", auth, async (req: Request, res: Response) => {
+    const {userId, customerId} = req.params
+
+    const getCustomer = await new CustomerController().findCustomerWithID(customerId, userId)
+
+    res.send(getCustomer)
+})
+
 app.patch("/customer", auth, async (req: Request, res: Response) => {
     const {customerId, name, birthDate, zipCode, city, district, address, 
         addressNumber, state, phone, email, userId} = req.body
