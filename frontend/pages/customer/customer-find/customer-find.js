@@ -1,6 +1,3 @@
-// buscar por nome
-// adicionar os loading onde precisa
-// adicionar as propriedades para testes nas tags que faltam
 
 async function loadingAllCustomers() {
     return await axios({
@@ -65,6 +62,8 @@ function mountCustomer(name, birthDate, zipCode, city, district, address, addres
 }
 
 async function updateCustomer(id) {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
     const customer = await axios({
         method: 'get',
         url: `${BASE_URL}/customer/id/${window.localStorage.getItem("user_id")}/${id}`,
@@ -72,6 +71,8 @@ async function updateCustomer(id) {
             'Authorization': `Bearer ${window.localStorage.getItem("token")}`
         }
     })
+
+    document.querySelector('.loading-container').style.zIndex = "-999"
 
     if(customer.data.status) {
         const myCustomer = customer.data.data[0]
@@ -89,6 +90,8 @@ async function updateCustomer(id) {
 }
 
 async function deleteCustomer(id) {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
     const customerDelete = await axios({
         method: 'delete',
         url: `${BASE_URL}/customer/${id}`,
@@ -96,6 +99,8 @@ async function deleteCustomer(id) {
             'Authorization': `Bearer ${window.localStorage.getItem("token")}`
         }
     })
+
+    document.querySelector('.loading-container').style.zIndex = "-999"
 
     if(customerDelete.data.status) {
         Swal.fire({
@@ -119,8 +124,48 @@ async function deleteCustomer(id) {
     mountCustomersTable(customers.data.data)
 }
 
+async function findUser(name) {
+    if(name) {
+        const customer = await axios({
+            method: 'get',
+            url: `${BASE_URL}/customer/${window.localStorage.getItem("user_id")}/${name}`,
+            headers: {
+                'Authorization': `Bearer ${window.localStorage.getItem("token")}`
+            }
+        })
+
+        if(customer.data.status) {
+            mountCustomersTable(customer.data.data)
+        }else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: customer.data.message,
+                confirmButtonColor: '#2469CB'
+            })
+        }
+        
+    } else {
+        const allCustomers = await loadingAllCustomers()
+
+        
+        if(allCustomers.data.status) {
+            mountCustomersTable(allCustomers.data.data)
+        }else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: allCustomers.data.message,
+                confirmButtonColor: '#2469CB'
+            })
+        }
+    }
+}
+
 //BTN SAVE
 document.querySelector("#customer-update-btn-save").onclick = async () => {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
     const name = document.querySelector("#customer-update-name").value
     const birth = document.querySelector("#customer-update-birth").value
     const cep = document.querySelector("#customer-update-cep").value
@@ -155,6 +200,8 @@ document.querySelector("#customer-update-btn-save").onclick = async () => {
             }
     })
 
+    document.querySelector('.loading-container').style.zIndex = "-999"
+
     if(save.data.status) {
         Swal.fire({
             icon: 'success',
@@ -174,6 +221,8 @@ document.querySelector("#customer-update-btn-save").onclick = async () => {
 
 //BTN CLOSE 
 document.querySelector("#customer-update-btn-close").onclick = async () => {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
     document.querySelector(".customer-update-container").style.zIndex = "-888"
     document.querySelector(".customer-update-container").style.visibility = "hidden"
     document.querySelector("#customer-update-name").value = ""
@@ -188,15 +237,31 @@ document.querySelector("#customer-update-btn-close").onclick = async () => {
     document.querySelector("#customer-update-email").value = ""
     window.sessionStorage.setItem("customer_id", "")
 
-    await loadingAllCustomers()
-
     const customers = await loadingAllCustomers()
+
+    document.querySelector('.loading-container').style.zIndex = "-999"
+
     mountCustomersTable(customers.data.data)
 }
 
+//BTN SEARCH
+document.querySelector("#customer-find-btn-search").onclick = async () => {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
+    const name = document.querySelector("#customer-find-name").value
+
+    await findUser(name)
+
+    document.querySelector('.loading-container').style.zIndex = "-999"
+}
+
 $(document).ready(async () => {
+    document.querySelector('.loading-container').style.zIndex = "999"
+
     const customers = await loadingAllCustomers()
     const totalCustomers = customers.data.status
+
+    document.querySelector('.loading-container').style.zIndex = "-999"
 
     if(!totalCustomers) {
         Swal.fire({
