@@ -42,14 +42,32 @@ async function deleteCustomer(userId) {
     })
 }
 
+async function isTokenValid() {
+    const isToken = window.localStorage.getItem('token')
+    const isLogged = await axios({
+        method: 'get',
+        url: `${BASE_URL}/user/username/${window.localStorage.getItem("user")}`,
+        headers: {
+            'Authorization': `Bearer ${isToken}`
+        }
+    })
+
+    if(!isLogged.data.status) {
+        $('#app').empty()
+        $('#app').load("pages/login/login.html")
+    }
+}
+
 // BUTTON OPEN CUSTOMER REGISTER
-document.querySelector("#btn-customer-register").onclick = () => {
+document.querySelector("#btn-customer-register").onclick = async () => {
+    await isTokenValid()
     $(".bottom-container").empty()
     $(".bottom-container").load("pages/customer/customer-register/customer-register.html")
 }
 
 // BUTTON OPEN CUSTOMER FIND
-document.querySelector("#btn-customer-search").onclick = () => {
+document.querySelector("#btn-customer-search").onclick = async () => {
+    await isTokenValid()
     $(".bottom-container").empty()
     $(".bottom-container").load("pages/customer/customer-find/customer-find.html")
 }

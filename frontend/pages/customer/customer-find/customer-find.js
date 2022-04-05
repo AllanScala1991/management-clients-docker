@@ -161,10 +161,27 @@ async function findUser(name) {
         }
     }
 }
+async function isTokenValid() {
+    const isToken = window.localStorage.getItem('token')
+    const isLogged = await axios({
+        method: 'get',
+        url: `${BASE_URL}/user/username/${window.localStorage.getItem("user")}`,
+        headers: {
+            'Authorization': `Bearer ${isToken}`
+        }
+    })
+
+    if(!isLogged.data.status) {
+        $('#app').empty()
+        $('#app').load("pages/login/login.html")
+    }
+}
 
 //BTN SAVE
 document.querySelector("#customer-update-btn-save").onclick = async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
+
+    await isTokenValid()
 
     const name = document.querySelector("#customer-update-name").value
     const birth = document.querySelector("#customer-update-birth").value
@@ -248,6 +265,8 @@ document.querySelector("#customer-update-btn-close").onclick = async () => {
 document.querySelector("#customer-find-btn-search").onclick = async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
 
+    await isTokenValid()
+
     const name = document.querySelector("#customer-find-name").value
 
     await findUser(name)
@@ -257,6 +276,8 @@ document.querySelector("#customer-find-btn-search").onclick = async () => {
 
 $(document).ready(async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
+
+    await isTokenValid()
 
     const customers = await loadingAllCustomers()
     const totalCustomers = customers.data.status
