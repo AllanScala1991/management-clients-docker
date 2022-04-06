@@ -8,7 +8,21 @@ async function getCustomers(userId, token) {
     })
 }
 
+async function isTokenValid() {
+    const isToken = window.localStorage.getItem('token')
+    const isLogged = await axios({
+        method: 'get',
+        url: `${BASE_URL}/user/username/${window.localStorage.getItem("user")}`,
+        headers: {
+            'Authorization': `Bearer ${isToken}`
+        }
+    })
 
+    if(!isLogged.data.status) {
+        $('#app').empty()
+        $('#app').load("pages/login/login.html")
+    }
+}
 
 $(document).ready(async () => {
     const userId = window.localStorage.getItem('user_id')
@@ -20,4 +34,6 @@ $(document).ready(async () => {
         document.querySelector('#report-total-customers').textContent = totalCustomer
         document.querySelector('#report-last-customer').textContent = lastCustomer
     }
+
+    await isTokenValid()
 })

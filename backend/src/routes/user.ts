@@ -33,13 +33,13 @@ app.get("/user/username/:username", auth, async (req: Request, res: Response) =>
 })
 
 app.patch("/user", auth, async (req: Request, res: Response) => {
-    const {id, username, password, email} = req.body
+    const {id, username, email} = req.body
 
-    const updateUser = await new UserController().updateUser({
+    const updateUser = await new UserController().updateUser(
         username,
-        password,
-        email
-    }, id)
+        email,
+        id
+    )
 
     return res.send(updateUser)
 })

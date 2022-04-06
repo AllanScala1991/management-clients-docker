@@ -60,14 +60,16 @@ async function isTokenValid() {
 
 // BUTTON OPEN CUSTOMER REGISTER
 document.querySelector("#btn-customer-register").onclick = async () => {
-    await isTokenValid()
     $(".bottom-container").empty()
     $(".bottom-container").load("pages/customer/customer-register/customer-register.html")
 }
 
 // BUTTON OPEN CUSTOMER FIND
 document.querySelector("#btn-customer-search").onclick = async () => {
-    await isTokenValid()
     $(".bottom-container").empty()
     $(".bottom-container").load("pages/customer/customer-find/customer-find.html")
 }
+
+$(document).ready(async () => {
+    await isTokenValid()
+})

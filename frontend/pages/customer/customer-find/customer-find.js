@@ -181,8 +181,6 @@ async function isTokenValid() {
 document.querySelector("#customer-update-btn-save").onclick = async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
 
-    await isTokenValid()
-
     const name = document.querySelector("#customer-update-name").value
     const birth = document.querySelector("#customer-update-birth").value
     const cep = document.querySelector("#customer-update-cep").value
@@ -265,8 +263,6 @@ document.querySelector("#customer-update-btn-close").onclick = async () => {
 document.querySelector("#customer-find-btn-search").onclick = async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
 
-    await isTokenValid()
-
     const name = document.querySelector("#customer-find-name").value
 
     await findUser(name)
@@ -277,12 +273,12 @@ document.querySelector("#customer-find-btn-search").onclick = async () => {
 $(document).ready(async () => {
     document.querySelector('.loading-container').style.zIndex = "999"
 
-    await isTokenValid()
-
     const customers = await loadingAllCustomers()
     const totalCustomers = customers.data.status
 
     document.querySelector('.loading-container').style.zIndex = "-999"
+
+    await isTokenValid()
 
     if(!totalCustomers) {
         Swal.fire({

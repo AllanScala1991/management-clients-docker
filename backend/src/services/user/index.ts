@@ -34,13 +34,12 @@ export class UserService {
         })
     }
 
-    async updateUser(user: IUser, id: string): 
+    async updateUser(username: string, email: string, id: string): 
     Promise<Prisma.Prisma__UserClient<User>>{
         return await this.prisma.user.update({
             data: {
-                username: user.username,
-                password: user.password,
-                email: user.email
+                username: username,
+                email: email
             },
             where: {
                 id: id

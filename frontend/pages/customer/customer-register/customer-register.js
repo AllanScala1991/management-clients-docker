@@ -29,6 +29,22 @@ async function createCustomer(name, birthDate, zipCode, city, district, address,
         })
 }
 
+async function isTokenValid() {
+    const isToken = window.localStorage.getItem('token')
+    const isLogged = await axios({
+        method: 'get',
+        url: `${BASE_URL}/user/username/${window.localStorage.getItem("user")}`,
+        headers: {
+            'Authorization': `Bearer ${isToken}`
+        }
+    })
+
+    if(!isLogged.data.status) {
+        $('#app').empty()
+        $('#app').load("pages/login/login.html")
+    }
+}
+
 function backCustomerPage() {
     $(".bottom-container").empty()
     $(".bottom-container").load("pages/customer/customer.html")
@@ -128,3 +144,7 @@ document.querySelector("#customer-btn-save").onclick = async () => {
 document.querySelector("#customer-btn-back").onclick = () => {
     backCustomerPage()
 }
+
+$(document).ready(async () => {
+    await isTokenValid()
+})

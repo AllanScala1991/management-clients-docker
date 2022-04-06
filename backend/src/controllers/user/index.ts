@@ -75,18 +75,18 @@ export class UserController {
         }
     }
 
-    async updateUser(user: IUser, id: string) {
+    async updateUser(username: string, email:string, id: string) {
         try {
-            if(!user.username || !user.password || !user.email) {
+            if(!username || !email) {
                 return {message: "Todos os campos devem ser preenchidos.", status: false}
             }
             if(!id) return {message: "Usuário não localizado.", status: false}
     
-            const isValidEmail = await this.emailValidator.validate(user.email)
+            const isValidEmail = await this.emailValidator.validate(email)
     
             if(!isValidEmail) return {message: "E-mail inválido, tente novamente.", status: false}
     
-            const userUpdate = await this.serviceUser.updateUser(user, id)
+            const userUpdate = await this.serviceUser.updateUser(username, email, id)
     
             if(!userUpdate) return {message: "Erro ao atualizar o usuário.", status: false}
     
