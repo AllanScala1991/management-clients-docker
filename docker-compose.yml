@@ -17,3 +17,13 @@ services:
       - ./backend/.env
     depends_on:
       - postgres
+  frontend:
+    image: nginx
+    container_name: front
+    ports:
+      - 8080:80
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - postgres
+      - backend
