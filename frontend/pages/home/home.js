@@ -18,6 +18,11 @@ async function isTokenValid() {
     }
 }
 
+function userLogout() {
+    localStorage.clear();
+    document.location.reload(true);
+}
+
 $(document).ready(async () => {
     let username = window.localStorage.getItem("user")
     setUsernameText(username)
@@ -43,4 +48,9 @@ document.querySelector('#home-btn-customer').onclick = async () => {
 document.querySelector("#home-user").onclick = async () => {
     $('#home-second-container .bottom-container').empty()
     $('#home-second-container .bottom-container').load('pages/user/user.html')
+}
+
+// USER LOGOUT 
+document.querySelector("#home-btn-logout").onclick = () => {
+    userLogout()
 }
