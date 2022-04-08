@@ -8,7 +8,9 @@
     "prettier-start": "pretty-quick --staged"
   },
   "husky": {
-    "pre-commit": "yarn open"
+    "hooks": {
+      "pre-commit": "yarn prettier-start"
+    }
   },
   "devDependencies": {
     "@types/cypress": "^1.1.3",
