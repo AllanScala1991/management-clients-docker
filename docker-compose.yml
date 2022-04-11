@@ -25,5 +25,4 @@ services:
     volumes:
       - ./frontend:/usr/share/nginx/html
     depends_on:
-      - postgres
       - backend
