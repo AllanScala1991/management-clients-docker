@@ -16,12 +16,28 @@ class Automated implements IAutomated {
         this.adapter.scenario(title, callback)
     }
 
+    beforeEach(callback: any): void {
+        this.adapter.beforeEach(callback)
+    }
+
     doVisit(url: string): void {
         this.adapter.doVisit(url)
     }
 
     doType(locator: string, text: string): void {
         this.adapter.doType(locator, text)
+    }
+
+    doClick(locator: string): void {
+        this.adapter.doClick(locator)
+    }
+
+    doExpectContain(locator: string, text: string): void {
+        this.adapter.doExpectContain(locator, text)
+    }
+
+    doExpectByVisible(locator: string): void {
+        this.adapter.doExpectByVisible(locator)
     }
     
 }
