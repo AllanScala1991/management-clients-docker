@@ -39,6 +39,10 @@ class Automated implements IAutomated {
     doExpectByVisible(locator: string): void {
         this.adapter.doExpectByVisible(locator)
     }
+
+    doRequest(url: string, method: string, headers: {} = {}, body: {} = {}) {
+        return this.adapter.doRequest(url, method, headers, body)
+    }
     
 }
 

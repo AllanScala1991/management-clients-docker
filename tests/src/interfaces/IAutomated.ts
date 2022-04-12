@@ -7,4 +7,5 @@ export interface IAutomated {
     doClick(locator: string): void
     doExpectContain(locator: string, text: string): void
     doExpectByVisible(locator: string): void
+    doRequest(url: string, method: string, headers: {}, body:{}): any
 }

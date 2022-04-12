@@ -40,4 +40,15 @@ export class Cypress implements IAutomated {
         cy.get(locator)
         .should("be.visible")
     }
+
+    doRequest(url: string, method: string, headers: {}, body: {}): any {
+        cy.request({
+            url: url,
+            method: method,
+            headers: headers,
+            body: body
+        }).then(res => {
+            return cy.wrap(res.body.token)
+        })
+    }
 }
