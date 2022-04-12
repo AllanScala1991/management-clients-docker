@@ -19,6 +19,10 @@ export class Cypress implements IAutomated {
         beforeEach(callback)
     }
 
+    before(callback: any): void {
+        before(callback)
+    }
+
     doVisit(url: string): void {
         cy.visit(url)
     }

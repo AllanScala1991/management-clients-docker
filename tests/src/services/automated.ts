@@ -20,6 +20,10 @@ class Automated implements IAutomated {
         this.adapter.beforeEach(callback)
     }
 
+    before(callback: any): void {
+        this.adapter.before(callback)
+    }
+
     doVisit(url: string): void {
         this.adapter.doVisit(url)
     }
