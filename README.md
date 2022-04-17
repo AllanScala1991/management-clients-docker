@@ -6,13 +6,13 @@ Esse projeto tem como objetivo o estudo e a implementação de uma aplicação c
 <br />
 
 ## Backend
-### Instalação
+## Instalação
     - git clone https://github.com/AllanScala1991/management-clients-docker
     - cd management-clients-docker/backend
     - npm install
     - npm run start
 
-### Variaveis de ambiente .env
+## Variaveis de ambiente .env
 - DATABASE_URL : URL do seu banco de dados
 - SECRET_TOKEN : token md5 hash
 - CEP_API : URL da API do Viacep
@@ -32,7 +32,7 @@ Esse projeto tem como objetivo o estudo e a implementação de uma aplicação c
 <br />
 
 ## Frontend
-### Instalação
+## Instalação
     - cd management-clients-docker/front
 OBS: É necessario subir um docker com nginx ou criar um http server.
 <br />
@@ -58,12 +58,12 @@ REPORT
 <br />
 
 ## Testes
-### Instalação
+## Instalação
     - cd management-clients-docker/tests
     - npm install
     - npm run open
 
-### Variaveis de ambiente .env
+## Variaveis de ambiente .env
 - BASE_URL : URL do seu frontend
 - LOGIN : usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
 - PASSWORD : senha do usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
