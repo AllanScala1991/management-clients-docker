@@ -23,16 +23,24 @@ export class Cypress implements IAutomated {
         before(callback)
     }
 
+    after(callback: any): void {
+        after(callback)
+    }
+
     doVisit(url: string): void {
         cy.visit(url)
     }
 
     doType(locator: string, text: string): void {
-        cy.get(locator, {timeout: this.timeout}).type(text)
+        cy.get(locator, {timeout: this.timeout})
+        .should("be.visible")
+        .type(text)
     }
 
     doClick(locator: string): void {
-        cy.get(locator, {timeout: this.timeout}).click({force: true})
+        cy.get(locator, {timeout: this.timeout})
+        .should("be.visible")
+        .click({force: true})
     }
     
     doExpectContain(locator: string, text: string): void {
@@ -54,5 +62,17 @@ export class Cypress implements IAutomated {
         }).then(res => {
             return cy.wrap(res.body.token)
         })
+    }
+
+    doEachClick(locator: string) {
+        cy.get(locator, {timeout: this.timeout})
+        .should('be.visible')
+        .each(element => {
+            cy.wrap(element).click()
+        })
+    }
+
+    doWait(seconds: number) {
+        cy.wait(seconds)
     }
 }

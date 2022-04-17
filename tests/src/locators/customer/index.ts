@@ -11,5 +11,7 @@ export enum CUSTOMER {
     INPUT_PHONE = '[test="@customer_register-input/phone"]',
     INPUT_EMAIL = '[test="@customer_register-input/email"]',
     BTN_SAVE = '[test="@customer_register-button/save"]',
-    BTN_BACK = '[test="@customer_register-button/back"]'
+    BTN_BACK = '[test="@customer_register-button/back"]',
+    BTN_SEARCH = '[test="@customer-btn/search"]',
+    BTN_DELETE = '.report-btn-delete'
 }

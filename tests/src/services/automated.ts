@@ -24,6 +24,10 @@ class Automated implements IAutomated {
         this.adapter.before(callback)
     }
 
+    after(callback: any): void {
+        this.adapter.after(callback)
+    }
+
     doVisit(url: string): void {
         this.adapter.doVisit(url)
     }
@@ -46,6 +50,14 @@ class Automated implements IAutomated {
 
     doRequest(url: string, method: string, headers: {} = {}, body: {} = {}) {
         return this.adapter.doRequest(url, method, headers, body)
+    }
+
+    doEachClick(locator: string) {
+        this.adapter.doEachClick(locator)
+    }
+
+    doWait(seconds: number) {
+        this.adapter.doWait(seconds)
     }
     
 }
