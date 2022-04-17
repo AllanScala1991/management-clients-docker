@@ -13,5 +13,8 @@ export enum CUSTOMER {
     BTN_SAVE = '[test="@customer_register-button/save"]',
     BTN_BACK = '[test="@customer_register-button/back"]',
     BTN_SEARCH = '[test="@customer-btn/search"]',
-    BTN_DELETE = '.report-btn-delete'
+    BTN_DELETE = '.report-btn-delete',
+    INPUT_SEARCH = '[test="@customer_find-input/name"]',
+    BTN_FILTER_SEARCH = '[test="@customer_find-btn/search"]',
+    TEXT_USERNAME = '.report-column > :nth-child(1)'
 }
