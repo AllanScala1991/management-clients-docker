@@ -3,7 +3,6 @@
 ## Introdução:
 Esse projeto tem como objetivo o estudo e a implementação de uma aplicação completa no docker. A estrutura <br /> da aplicação foi dividida em 3 frentes, sendo elas: Backend, Frontend e Testes, siga o passo a passo abaixo para <br /> para conseguir rodar o projeto em sua maquina.
 <br />
-<br />
 
 ## Backend
 ### Instalação
@@ -19,7 +18,7 @@ Esse projeto tem como objetivo o estudo e a implementação de uma aplicação c
 - USERNAME : usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
 - PASSWORD : senha do usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
 <br />
-<br />
+
 ### Tecnologias utilizadas
 - Express
 - Typescript
@@ -28,7 +27,6 @@ Esse projeto tem como objetivo o estudo e a implementação de uma aplicação c
 - Email Validator
 - JsonWebToken
 - Bcrypt
-<br />
 <br />
 
 ## Frontend
@@ -57,7 +55,6 @@ CUSTOMER
 REPORT
 ![report](img/report.png)
 <br />
-<br />
 
 ## Testes
 ### Instalação
@@ -70,11 +67,8 @@ REPORT
 - LOGIN : usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
 - PASSWORD : senha do usuário ADMIN ("O mesmo deve ser criado após iniciar a aplicação")
 <br />
-<br />
 
 ### Tecnologias utilizadas
 - Cypress
 - Typescript
 - Chance
-<br />
-<br />
